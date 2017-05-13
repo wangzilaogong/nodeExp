@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>互联网招标信息后台管理系统</title>
+    <link rel="stylesheet" type="text/css" href="jquery-easyui-1.5.1/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="jquery-easyui-1.5.1/themes/icon.css">
+    <script type="text/javascript" src="jquery-easyui-1.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="jquery-easyui-1.5.1/jquery.easyui.min.js"></script>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/easy.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <style>
+        .cus-menu{
+            border: 1px solid #ddd !important;
+            border-radius:5px;
+        }
+        .cus-menu li ul{
+            padding-left:35px;
+        }
+        .cus-content .table th{
+            font-size: 13px;
+            text-align: center;
+        }
+        .cus-content .table td{
+            font-size: 12px;
+            text-align: center;
+            vertical-align: middle;
+        }
+        .cus-content .pagination{
+            margin: 0px;
+        }
+    </style>
+    <script>
+        //清空输入框
+        function cleartext(){
+            $("#text_username").textbox('clear');
+        }
+
+    </script>
+</head>
+
+<body id="box" class="easyui-layout"  style="overflow: hidden" scroll="no">
+<noscript>你的浏览器不支持JavaScript！</noscript>
+
+<div region="north" split="true" border="false" style="overflow: hidden;height: 100px; background:  #7f99be;
+        line-height: 20px;color: #fff; font-family: Verdana, 微软雅黑,黑体">
+    <span style=" float:left;font-size: 30px;margin-top:10px;padding-top: 10px; margin-left: 50px;">互联网招标信息管理系统</span>
+    <span style="float:right; padding-right:50px;padding-top: 20px" class="head">欢迎 ：<%=username%> <a href="javascript:window.opener=null;window.close();" id="loginOut" style="text-decoration:none;color:white;">安全退出</a></span>
+</div>
+
+<div region="south" split="true" style="height: 30px; background: #D2E0F2;">
+</div>
+<div id="west" region="west" split="true" hide="true" title="导航菜单" style="width: 180px;">
+    <div id="nav" class="easyui-accordion" fit="true" border="false">
+        <!--  导航内容 -->
+        <div title="信息管理" iconCls="icon-terminal" style="overflow:auto;padding:10px;">
+            <ul id="ttSystem" class="easyui-tree">
+                <li id="aaa" >aaa</li>
+                <li ><a onclick="a()">sdada</a></li>
+                <li ><a onclick="a()">sdada</a></li>
+
+            </ul>
+        </div>
+        <div title="基础信息" iconCls="icon-newspaper"  style="overflow:auto;padding:10px;">
+            <ul id="ttBase" class="easyui-tree"></ul>
+        </div>
+        <div title="人员管理" iconCls="icon-users"  style="overflow:auto;padding:10px;">
+            <ul id="ttPeople" class="easyui-tree"></ul>
+        </div>
+        <div title="爬虫管理" iconCls="icon-bell"  style="padding:10px;">
+            <li ><a href="http://www.futurehorus.com:5000">爬虫控制台</a></li>
+        </div>
+
+    </div>
+</div>
+<!--面板即主要内容-->
+<div id="mainPanle" region="center"  style="background: #eee; overflow-y: hidden;color:red;">
+    <div class="easyui-layout" fit="true">
+
+        <div id="tabs" class="easyui-tabs"  fit="true" border="false" >
+            <div title="首页" fit="true" >
+                <span>省市：</span><select id="text_username"  class="easyui-combobox" >
+                    <option>天津市</option>
+                    <option>山东省</option>
+                    <option>宿迁市</option>
+                </select>
+                <span>时间：</span><input id="time"  class="easyui-datetimebox" >
+                <a id="searchbtn" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'" style="width:80px">搜索</a>
+                <a id="clearbtn" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-bin'" style="width:80px" onclick="cleartext()">清空</a>
+
+                <table class="easyui-datagrid" title="网址信息" fit="true">
+                    <thead>
+                    <tr>
+                        <th data-options="field:'itemid',width:150">ID</th>
+                        <th data-options="field:'productid',width:150">省份</th>
+                        <th data-options="field:'listprice',width:150,align:'right'">标题</th>
+                        <th data-options="field:'unitcost',width:150,align:'right'">网址</th>
+                        <th data-options="field:'attr1',width:150">发布日期</th>
+                        <th data-options="field:'status',width:150,align:'center'">操作</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

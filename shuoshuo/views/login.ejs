@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login@wk private</title>
+    <!--响应式，约束缩放-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!--通知IE采用其支持的最新模式-->
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
+
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <style>
+        .container{
+            width: 450px;
+            height: 350px;
+            background: #ffffff;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            border-radius: 10px;
+        }
+        #errorpage,#errorpage1{
+            display: none;
+        }
+
+    </style>
+</head>
+<body class="bg-info">
+<div class="container">
+    <form role="form">
+        <h3 class="text-center">后台管理系统</h3>
+        <div class="form-group">
+            <label for="username">用户名</label>
+            <input type="text" id="username" placeholder="请输入用户名" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="password">密码</label>
+            <input type="password" id="password" placeholder="请输入密码" class="form-control">
+        </div>
+
+
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" >请记住我
+            </label>
+        </div>
+        <a  id="denglu" class="btn btn-success btn-block" >登录</a>
+        <a class="btn btn-success btn-block" href="/reg">注册</a>
+    </form>
+</div>
+<div id="errorpage" class="alert alert-danger" role="alert">
+    用户名不存在
+</div>
+<div id="errorpage1" class="alert alert-danger" role="alert">
+   账号or密码错误
+</div>
+<script type="text/javascript">
+    $("input").focus(function(){
+        $('#errorpage').fadeOut();
+    });
+    $("#denglu").click(function () {
+        $.post("/dologin",{
+            "username":$('#username').val(),
+            "password":$('#password').val()
+        },function(result){
+            if(result=="1"){
+                alert('登录成功，即将返回到首页！');
+                window.location = "/";
+            }else if(result=="-1"){
+                $('#errorpage').fadeIn();
+            }else if(result== "-2"){
+                $('#errorpage1').fadeIn();
+            }
+        });
+    })
+
+
+</script>
+</body>
+</html>
